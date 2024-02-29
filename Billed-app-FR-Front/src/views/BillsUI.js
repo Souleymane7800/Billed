@@ -20,6 +20,7 @@ const row = (bill) => {
   }
 
 const rows = (data) => {
+  // a changer
   return (data && data.length) ? data.map(bill => row(bill)).join("") : ""
 }
 
