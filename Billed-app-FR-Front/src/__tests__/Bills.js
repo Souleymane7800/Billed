@@ -27,7 +27,6 @@ describe("Given I am connected as an employee", () => {
       window.onNavigate(ROUTES_PATH.Bills)
       await waitFor(() => screen.getByTestId('icon-window'))
       const windowIcon = screen.getByTestId('icon-window')
-      //to-do write expect expression
 
       expect(windowIcon.classList.contains('active-icon')).toBe(true);
 
@@ -138,8 +137,7 @@ describe("Given I am connected as an employee", () => {
   test("getBills from the mock store with error", async () => {
     const mockError = new Error("Simulated error in list method");
 
-    // const mockList = jest.fn().mockRejectedValue(mockError);
-    const mockedBillsError = {
+      const mockedBillsError = {
       bills: jest.fn(() => ({
         list: jest.fn(() => Promise.reject(mockError)),
       }))
@@ -158,7 +156,6 @@ describe("Given I am connected as an employee", () => {
   });
 });
 
-// faire un describe
 describe("Given I am a user connected as Employee", () => {
   describe("When I navigate to Bills", () => {
   
@@ -197,71 +194,3 @@ describe("Given I am a user connected as Employee", () => {
     });
   });
 });
-
-// test d'intégration GET
-// describe("Given I am a user connected as Admin", () => {
-//   describe("When I navigate to Dashboard", () => {
-//     test("fetches bills from mock API GET", async () => {
-//       localStorage.setItem("user", JSON.stringify({ type: "Admin", email: "a@a" }));
-//       const root = document.createElement("div")
-//       root.setAttribute("id", "root")
-//       document.body.append(root)
-//       router()
-//       window.onNavigate(ROUTES_PATH.Dashboard)
-//       await waitFor(() => screen.getByText("Validations"))
-//       const contentPending  = await screen.getByText("En attente (1)")
-//       expect(contentPending).toBeTruthy()
-//       const contentRefused  = await screen.getByText("Refusé (2)")
-//       expect(contentRefused).toBeTruthy()
-//       expect(screen.getByTestId("big-billed-icon")).toBeTruthy()
-//     })
-//   describe("When an error occurs on API", () => {
-//     beforeEach(() => {
-//       jest.spyOn(mockStore, "bills")
-//       Object.defineProperty(
-//           window,
-//           'localStorage',
-//           { value: localStorageMock }
-//       )
-//       window.localStorage.setItem('user', JSON.stringify({
-//         type: 'Admin',
-//         email: "a@a"
-//       }))
-//       const root = document.createElement("div")
-//       root.setAttribute("id", "root")
-//       document.body.appendChild(root)
-//       router()
-//     })
-//     test("fetches bills from an API and fails with 404 message error", async () => {
-
-//       mockStore.bills.mockImplementationOnce(() => {
-//         return {
-//           list : () =>  {
-//             return Promise.reject(new Error("Erreur 404"))
-//           }
-//         }})
-//       window.onNavigate(ROUTES_PATH.Dashboard)
-//       await new Promise(process.nextTick);
-//       const message = await screen.getByText(/Erreur 404/)
-//       expect(message).toBeTruthy()
-//     })
-
-//     test("fetches messages from an API and fails with 500 message error", async () => {
-
-//       mockStore.bills.mockImplementationOnce(() => {
-//         return {
-//           list : () =>  {
-//             return Promise.reject(new Error("Erreur 500"))
-//           }
-//         }})
-
-//       window.onNavigate(ROUTES_PATH.Dashboard)
-//       await new Promise(process.nextTick);
-//       const message = await screen.getByText(/Erreur 500/)
-//       expect(message).toBeTruthy()
-//     })
-//   })
-
-//   })
-// })
-// 

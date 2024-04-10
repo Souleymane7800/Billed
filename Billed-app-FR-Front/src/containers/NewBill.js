@@ -31,8 +31,9 @@ export default class NewBill {
     if (!isPicture(file.type)) {
       // if !isFile => error message
       const errorMessage = document.createElement('div');
-      errorMessage.textContent = 'Veuillez sélectionner un fichier au format jpeg, jpg, png';
+      errorMessage.textContent = 'Veuillez sélectionner un fichier au format (.jpg) ou (.jpeg) ou (.png)';
       errorMessage.style.color = 'red';
+      errorMessage.setAttribute('data-testid', 'errorMessage');
 
       // display errorMessage
       fileInput.parentNode.appendChild(errorMessage);
